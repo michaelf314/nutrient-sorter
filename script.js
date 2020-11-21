@@ -17,6 +17,7 @@ servingSizes['Fruits'] = 140;
 servingSizes['Legumes'] = 130;
 servingSizes['Grains'] = 140;
 servingSizes['Nuts'] = 30;
+const exclude = [0, 1, 2, 4, 5, 35, 39, 54];
 
 let dvs = '|||||||1.2|1.3|16|5|1.7|2.4|400|3000|90|800|15|120|1300|0.9|18|420|2.3|1250|4700|55|2300|11|275|28||||78||||20|||||||||||50|||||'.split('|');
 
@@ -58,7 +59,6 @@ function sortFoods(i) {
 }
 
 function createDropdown() {
-  let exclude = [0, 1, 2, 4, 5, 35, 54];
   for (i in header) {
     if (exclude.includes(parseInt(i)))
       continue;
@@ -117,7 +117,6 @@ function updateList() {
 
 function printFood(e) {
   let row = data[e.currentTarget.id.substr(1)];
-  let exclude = [0, 1, 2, 4, 5, 35, 54];
   let g = '100g';
   if (per == 'calorie') g = '100 calories';
   else if (per == 'serving') g = servingSizes[row[categoryIndex]] + 'g';
