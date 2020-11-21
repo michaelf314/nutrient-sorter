@@ -29,6 +29,10 @@ label {
   width:300px;
 }
 
+#foods {
+  width:450px;
+}
+
 #foods div:hover {
   text-decoration:underline;
 }
