@@ -1,0 +1,34 @@
+body {
+  text-align:center;
+}
+
+#container {
+  width:550px;
+  margin:auto;
+  text-align:left;
+  position:relative;
+}
+
+#select {
+  margin: 10px 20px 10px 0;
+}
+
+label {
+  margin-right:10px;
+}
+
+.bar {
+  height:5px;
+  background-color:#0D0;
+  margin-bottom:10px;
+}
+
+#food {
+  position:absolute;
+  left:475px;
+  width:300px;
+}
+
+#foods div:hover {
+  text-decoration:underline;
+}

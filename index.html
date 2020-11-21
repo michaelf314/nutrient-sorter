@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Nutrient sorter</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <b>Nutrient sorter for vegan foods</b>
+    <div id="container">
+    <form id="form">
+    <input type="radio" name="per" id="gram" checked>
+    <label for="gram">per 100g</label>
+    <input type="radio" name="per" id="calorie">
+    <label for="calorie">per 100 calories</label>
+    <input type="radio" name="per" id="serving">
+    <label for="serving">per serving</label>
+    <br>
+    </form>
+    <select id="select"></select>
+    <span id="dv"></span>
+    <div id="food"></div>
+    <div id="foods"></div>
+    </div>
+    <a>Link to this list</a>
+    <script src="script.js"></script>
+  </body>
+</html>
