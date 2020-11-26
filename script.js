@@ -167,7 +167,7 @@ function updateURL() {
       allGroups = false;
   }
   let per = document.querySelector('input[type=radio]:checked').id;
-  let url = `${location.origin}/?nutrient=${nutrient}`;
+  let url = `${location.href.split('?')[0]}?nutrient=${nutrient}`;
   if (!allGroups)
     url += `&groups=${groups}`;
   if (per != 'gram')
