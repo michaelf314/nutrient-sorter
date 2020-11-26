@@ -1,7 +1,9 @@
 const form = document.querySelector('#form');
 const select = document.querySelector('#select');
 const a = document.querySelector('a');
-const dv = document.querySelector('#dv');
+const dri = document.querySelector('#dri');
+const male = document.querySelector('#male');
+const female = document.querySelector('#female');
 const foods = document.querySelector('#foods');
 const food = document.querySelector('#food');
 let boxes;
@@ -19,7 +21,10 @@ servingSizes['Grains'] = 140;
 servingSizes['Nuts'] = 30;
 const exclude = [0, 1, 2, 4, 5, 35, 39, 54];
 
-let dvs = '|||||||1.2|1.3|16|5|1.7|2.4|400|3000|90|800|15|120|1300|0.9|18|420|2.3|1250|4700|55|2300|11|275|28||||78||||20|||||||||||50|||||'.split('|');
+// DRI for 19-30 y
+const dri_m = '|||||||1.2|1.3|16|5|1.3|2.4|400|3000|90|600|15|120|1000|0.9|8|400|2.3|700|3400|55|1500|11|130|38||||||||||1.6|17||||||||56|||||'.split('|');
+const dri_f = '|||||||1.1|1.1|14|5|1.3|2.4|400|2333|75|600|15|90|1000|0.9|18|310|1.8|700|2600|55|1500|8|130|25||||||||||1.1|12||||||||46|||||'.split('|');
+let dris = dri_m;
 
 async function getData() {
   await fetch('servings.txt').then((r) => r.text()).then((r) => data = r);
@@ -42,8 +47,8 @@ function round(i) {
 }
 
 function calculatePercent(v, i) {
-  if (!dvs[i]) return '';
-  return `<small>(${(v/dvs[i]*100).toFixed(0)}%)</small> `;
+  if (!dris[i]) return '';
+  return `<small>(${(v/dris[i]*100).toFixed(0)}%)</small> `;
 }
 
 function sortFoods(i) {
@@ -68,10 +73,10 @@ function createDropdown() {
 
 function createGroups() {
   for (i in servingSizes)
-    form.insertAdjacentHTML('beforeend', `<input type="checkbox" id="${i}" checked>
+    select.insertAdjacentHTML('beforebegin', `<input type="checkbox" id="${i}" checked>
     <label for="${i}">${i}</label>`);
   document.querySelector('label[for=Nuts]').innerHTML = 'Nuts/seeds';
-  form.insertAdjacentHTML('beforeend', `<input type="button" id="all" value="Uncheck all">`)
+  select.insertAdjacentHTML('beforebegin', `<input type="button" id="all" value="Uncheck all">`)
   const all = document.querySelector('#all');
   boxes = document.querySelectorAll('input[type=checkbox]');
   all.addEventListener('click', () => {
@@ -94,9 +99,14 @@ function updateList() {
   foods.innerHTML = '';
   let largest = data[0]['v'];
   let unit = header[select.value].split('(').pop().split(')')[0];
-  dv.innerHTML = '';
-  if (dvs[select.value])
-    dv.innerHTML = `<b>DV = ${dvs[select.value]} ${unit}</b>`;
+  dri.innerHTML = '';
+  dris = male.checked ? dri_m : dri_f;
+  if (dris[select.value]) {
+    dri.innerHTML = `<b>DRI = ${dris[select.value]} ${unit}</b>`;
+    gender.style.display = null;
+  }
+  else
+    gender.style.display = 'none';
   for (i in data) {
     if (!groups[data[i][categoryIndex]])
       continue;
@@ -171,7 +181,6 @@ async function init() {
   createGroups();
   getURL();
   updateList();
-  select.addEventListener('change', updateList);
   form.addEventListener('change', updateList);
 }
 
