@@ -117,9 +117,9 @@ function updateList() {
     let serving = '';
     if (per == 'serving')
       serving = '(' + servingSizes[data[i][categoryIndex]] + 'g)';
-    let width = 450*Number(data[i]['v'])/Number(largest);
+    let width = Number(data[i]['v'])/Number(largest);
     foods.insertAdjacentHTML('beforeend', `<div id="_${i}">${roundedAmount} ${unit} ${percent}<b>${data[i][foodnameIndex]}</b> ${serving}<br>
-    <div class="bar" style="width:${width}px;"></div></div>`);
+    <div class="bar" style="width:${width*100}%;"></div></div>`);
     document.querySelector('#_'+i).addEventListener('click', printFood);
   }
   updateURL();
