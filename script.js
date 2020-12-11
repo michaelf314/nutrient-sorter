@@ -76,7 +76,7 @@ function createGroups() {
     select.insertAdjacentHTML('beforebegin', `<input type="checkbox" id="${i}" checked>
     <label for="${i}">${i}</label>`);
   document.querySelector('label[for=Nuts]').innerHTML = 'Nuts/seeds';
-  select.insertAdjacentHTML('beforebegin', `<input type="button" id="all" value="Uncheck all">`)
+  select.insertAdjacentHTML('beforebegin', `<input type="button" id="all" value="Uncheck all"><br>`)
   const all = document.querySelector('#all');
   boxes = document.querySelectorAll('input[type=checkbox]');
   all.addEventListener('click', () => {
