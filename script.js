@@ -103,10 +103,10 @@ function updateList() {
   dris = male.checked ? dri_m : dri_f;
   if (dris[select.value]) {
     dri.innerHTML = `<b>DRI = ${dris[select.value]} ${unit}</b>`;
-    gender.style.display = null;
+    gender.classList.remove('hidden');
   }
   else
-    gender.style.display = 'none';
+    gender.classList.add('hidden');
   for (i in data) {
     if (!groups[data[i][categoryIndex]])
       continue;

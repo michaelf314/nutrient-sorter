@@ -36,3 +36,7 @@ label, #dri {
 #foods div:hover {
   text-decoration:underline;
 }
+
+.hidden {
+  display: none;
+}
