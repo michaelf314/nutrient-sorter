@@ -17,6 +17,10 @@ label, #dri {
   margin-right:10px;
 }
 
+input {
+  margin-top: 10px;
+}
+
 .bar {
   height:5px;
   background-color:#0D0;
@@ -35,6 +39,7 @@ label, #dri {
 
 #foods div:hover {
   text-decoration:underline;
+  cursor: pointer;
 }
 
 .hidden {
